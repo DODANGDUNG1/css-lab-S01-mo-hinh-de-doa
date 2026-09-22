@@ -1,42 +1,111 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Mô hình đe dọa, lab S1",
-  "type": "object",
-  "required": ["he_thong", "thanh_phan", "moi_de_doa", "chon_xu_ly"],
-  "properties": {
-    "he_thong": { "type": "string", "minLength": 5 },
-    "thanh_phan": {
-      "type": "array", "minItems": 3, "maxItems": 3,
-      "items": { "type": "object", "required": ["ten", "vai_tro"],
-        "properties": { "ten": {"type": "string", "minLength": 2},
-                        "vai_tro": {"type": "string", "minLength": 5} } }
+  "he_thong": "Hệ thống Điểm danh Sinh viên UEH",
+  "thanh_phan": [
+    {
+      "ten": "Giao diện Web",
+      "vai_tro": "Cung cấp giao diện người dùng cho sinh viên và giảng viên tương tác."
     },
-    "moi_de_doa": {
-      "type": "array", "minItems": 8,
-      "items": {
-        "type": "object",
-        "required": ["ma", "phat_bieu", "nguyen_ly", "attack", "tac_dong", "kha_nang"],
-        "properties": {
-          "ma": { "type": "string", "pattern": "^M[0-9]{2}$" },
-          "phat_bieu": { "type": "string", "minLength": 40 },
-          "nguyen_ly": { "type": "integer", "minimum": 1, "maximum": 7 },
-          "attack": { "type": "string", "pattern": "^T[0-9]{4}(\\.[0-9]{3})?$" },
-          "tac_dong": { "type": "integer", "minimum": 1, "maximum": 5 },
-          "kha_nang": { "type": "integer", "minimum": 1, "maximum": 5 }
-        }
-      }
+    {
+      "ten": "API Server",
+      "vai_tro": "Xử lý logic nghiệp vụ và các yêu cầu điểm danh, xác thực."
     },
-    "chon_xu_ly": {
-      "type": "array", "minItems": 3, "maxItems": 3,
-      "items": {
-        "type": "object", "required": ["ma", "chi_phi", "don_vi", "can_cu"],
-        "properties": {
-          "ma": { "type": "string", "pattern": "^M[0-9]{2}$" },
-          "chi_phi": { "type": "number", "minimum": 0 },
-          "don_vi": { "type": "string", "minLength": 2 },
-          "can_cu": { "type": "string", "minLength": 15 }
-        }
-      }
+    {
+      "ten": "Cơ sở dữ liệu",
+      "vai_tro": "Lưu trữ thông tin tài khoản, danh sách lớp và dữ liệu điểm danh."
     }
-  }
+  ],
+  "moi_de_doa": [
+    {
+      "ma": "M01",
+      "ten": "Giả mạo phiên làm việc",
+      "nguyen_ly": 2,
+      "attack": "T1539",
+      "phat_bieu": "Kẻ tấn công đánh cắp phiên đăng nhập của giảng viên nếu hệ thống lưu trữ cookie không bật cơ chế HttpOnly.",
+      "tac_dong": 4,
+      "kha_nang": 3
+    },
+    {
+      "ma": "M02",
+      "ten": "Lộ thông tin qua SQL Injection",
+      "nguyen_ly": 4,
+      "attack": "T1590",
+      "phat_bieu": "Hệ thống làm lộ thông tin nhạy cảm của sinh viên khi kẻ tấn công chèn câu lệnh SQL độc hại vào ô tìm kiếm.",
+      "tac_dong": 5,
+      "kha_nang": 4
+    },
+    {
+      "ma": "M03",
+      "ten": "Tấn công từ chối dịch vụ",
+      "nguyen_ly": 6,
+      "attack": "T1499",
+      "phat_bieu": "Hệ thống bị quá tải trong trường hợp kẻ tấn công gửi hàng loạt yêu cầu đồng thời vào API điểm danh.",
+      "tac_dong": 3,
+      "kha_nang": 3
+    },
+    {
+      "ma": "M04",
+      "ten": "Tấn công leo thang đặc quyền",
+      "nguyen_ly": 1,
+      "attack": "T1078",
+      "phat_bieu": "Người dùng thông thường truy cập được tài nguyên quản trị nếu phân quyền API bị lỏng lẻo.",
+      "tac_dong": 4,
+      "kha_nang": 2
+    },
+    {
+      "ma": "M05",
+      "ten": "Nghe lén dữ liệu truyền tải",
+      "nguyen_ly": 3,
+      "attack": "T1040",
+      "phat_bieu": "Kẻ tấn công bắt gói tin mạng khi dữ liệu không được mã hóa bằng giao thức HTTPS an toàn.",
+      "tac_dong": 4,
+      "kha_nang": 3
+    },
+    {
+      "ma": "M06",
+      "ten": "Giả mạo yêu cầu phía máy chủ",
+      "nguyen_ly": 5,
+      "attack": "T1534",
+      "phat_bieu": "Máy chủ gửi yêu cầu đi nơi khác miễn là kẻ tấn công thao túng được tham số URL đầu vào.",
+      "tac_dong": 3,
+      "kha_nang": 2
+    },
+    {
+      "ma": "M07",
+      "ten": "Lỗi cấu hình bảo mật mặc định",
+      "nguyen_ly": 7,
+      "attack": "T1100",
+      "phat_bieu": "Hệ thống bị khai thác một khi quản trị viên giữ nguyên tài khoản mật khẩu mặc định của nhà phát triển.",
+      "tac_dong": 5,
+      "kha_nang": 3
+    },
+    {
+      "ma": "M08",
+      "ten": "Tấn công xuyên trang tập lệnh",
+      "nguyen_ly": 2,
+      "attack": "T1189",
+      "phat_bieu": "Trình duyệt người dùng thực thi mã độc JavaScript nếu dữ liệu đầu vào không được lọc cẩn thận.",
+      "tac_dong": 3,
+      "kha_nang": 4
+    }
+  ],
+  "chon_xu_ly": [
+    {
+      "ma": "M01",
+      "chi_phi": 1500000,
+      "don_vi": "VND",
+      "can_cu": "Ước tính dựa trên thời gian cấu hình lại cờ bảo mật cookie trên toàn bộ hệ thống."
+    },
+    {
+      "ma": "M02",
+      "chi_phi": 3000000,
+      "don_vi": "VND",
+      "can_cu": "Dựa trên chi phí rà soát và viết lại các câu lệnh truy vấn an toàn tại tầng cơ sở dữ liệu."
+    },
+    {
+      "ma": "M03",
+      "chi_phi": 2000000,
+      "don_vi": "VND",
+      "can_cu": "Tính toán dựa trên công sức triển khai cơ chế giới hạn tốc độ truy cập API."
+    }
+  ]
 }

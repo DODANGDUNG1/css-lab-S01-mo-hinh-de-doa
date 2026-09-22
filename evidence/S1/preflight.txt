@@ -1,0 +1,4 @@
+kien truc CPU: x86_64
+phien ban Python: Python 3.10
+phien ban Docker: 29.8.0
+docker daemon: dang chay

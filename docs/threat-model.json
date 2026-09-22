@@ -1,0 +1,86 @@
+{
+  "system_name": "He thong Diem danh Sinh vien UEH",
+  "components": [
+    {
+      "id": "c1",
+      "name": "Trinh duyet Web (Client)",
+      "type": "browser"
+    },
+    {
+      "id": "c2",
+      "name": "May chu Ung dung (App Server)",
+      "type": "application_server"
+    },
+    {
+      "id": "c3",
+      "name": "Co so du lieu (Database)",
+      "type": "database"
+    }
+  ],
+  "threats": [
+    {
+      "id": "T01",
+      "statement": "Ke tan cong co the gia mao dinh danh giang vien de diem danh khong hop le.",
+      "stride_category": "Spoofing",
+      "mitre_attack": "T1078",
+      "impact": 4,
+      "likelihood": 3
+    },
+    {
+      "id": "T02",
+      "statement": "Ke tan cong doc du lieu bang ma sinh vien tren duong truyen khong ma hoa.",
+      "stride_category": "Information Disclosure",
+      "mitre_attack": "T1040",
+      "impact": 4,
+      "likelihood": 4
+    },
+    {
+      "id": "T03",
+      "statement": "Ke tan cong thay doi truc tiep du lieu diem so hoac trang thai diem danh trong CSDL.",
+      "stride_category": "Tampering",
+      "mitre_attack": "T1565",
+      "impact": 5,
+      "likelihood": 2
+    },
+    {
+      "id": "T04",
+      "statement": "Ke tan cong ngan chan sinh vien truy cap he thong diem danh bang cach nhan chim bang luu luong DoS.",
+      "stride_category": "Denial of Service",
+      "mitre_attack": "T1498",
+      "impact": 3,
+      "likelihood": 3
+    },
+    {
+      "id": "T05",
+      "statement": "Nguoi dung thong thuong co the thuc thi cac lenh quan tri vi thieu kiem tra phan quyen.",
+      "stride_category": "Elevation of Privilege",
+      "mitre_attack": "T1068",
+      "impact": 5,
+      "likelihood": 2
+    },
+    {
+      "id": "T06",
+      "statement": "Kẻ tan cong gia mao yeu cau tu phia nguoi dung hop phap de thuc hien hanh vi CSRF.",
+      "stride_category": "Elevation of Privilege",
+      "mitre_attack": "T1501",
+      "impact": 3,
+      "likelihood": 3
+    },
+    {
+      "id": "T07",
+      "statement": "He thong kh ghi lai nhat ky (audit log) khi co truy cap bat thuong vao co so du lieu.",
+      "stride_category": "Repudiation",
+      "mitre_attack": "T1176",
+      "impact": 3,
+      "likelihood": 4
+    },
+    {
+      "id": "T08",
+      "statement": "Ro ri thong tin nhạy cảm cua sinh vien qua loi cau lenh SQL Injection tren ung dụng.",
+      "stride_category": "Information Disclosure",
+      "mitre_attack": "T1190",
+      "impact": 5,
+      "likelihood": 3
+    }
+  ]
+}
